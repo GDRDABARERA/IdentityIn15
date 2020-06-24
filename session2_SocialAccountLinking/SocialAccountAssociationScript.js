@@ -40,6 +40,9 @@ var onLoginRequest = function onLoginRequest(context) {
                                                     if (authUser.localClaims["http://wso2.org/claims/emailaddress"] === fedUser.remoteClaims.email) {
                                                        // Do the account linking with the local user account and the facebook account.
                                                        doAssociationWithLocalUser(fedUser, authUser.username, authUser.tenantDomain, authUser.userStoreDomain);
+                                                    } else {
+                                                        sendError('http://localhost.com:9090/pickup-dispatch/index.jsp', {'errorcode':'000403','errorMsg':'The local' +
+                                                                ' account you used to login does not match.'});
                                                     }
                                                 }
                                             });
