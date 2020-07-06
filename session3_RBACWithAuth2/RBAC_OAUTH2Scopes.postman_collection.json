@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "43722b8b-bb59-4e06-9804-78b6682ad1d2",
+		"name": "RBAC_OAUTH2Scopes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:9443/api/identity/oauth2/v1.0/scopes",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"write_access\",\n    \"displayName\": \"write_access\",\n    \"description\": \"write access scope\",\n    \"bindings\": [\n        \"manager\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/v1.0/scopes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"v1.0",
+						"scopes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:9443/api/identity/oauth2/v1.0/scopes/name/write_access",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/v1.0/scopes/name/write_access",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"v1.0",
+						"scopes",
+						"name",
+						"write_access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:9443/api/identity/oauth2/v1.0/scopes",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/v1.0/scopes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"v1.0",
+						"scopes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
