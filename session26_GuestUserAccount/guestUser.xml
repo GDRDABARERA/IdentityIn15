@@ -1,0 +1,29 @@
+
+<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"  PolicyId="guest_account_policy" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable" Version="1.0">
+   <Target>
+      <AnyOf>
+         <AllOf>
+            <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+               <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">authenticate</AttributeValue>
+               <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"></AttributeDesignator>
+            </Match>
+         </AllOf>
+      </AnyOf>
+   </Target>
+   <Rule Effect="Permit" RuleId="guest_permit">
+      <Condition>
+         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:any-of-any">
+            <Function FunctionId="urn:oasis:names:tc:xacml:1.0:function:date-less-than"></Function>
+            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-date" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:environment" DataType="http://www.w3.org/2001/XMLSchema#date" MustBePresent="true"></AttributeDesignator>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:date-bag">
+               <Apply FunctionId="urn:oasis:names:tc:xacml:3.0:function:date-from-string">
+                  <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                     <AttributeDesignator AttributeId="http://wso2.org/claims/accountExpiryDate" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"></AttributeDesignator>
+                  </Apply>
+               </Apply>
+            </Apply>
+         </Apply>
+      </Condition>
+   </Rule>
+   <Rule Effect="Deny" RuleId="deny_others"></Rule>
+</Policy>        
